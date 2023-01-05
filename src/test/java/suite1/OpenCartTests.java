@@ -1,20 +1,16 @@
 package suite1;
 
-import org.testng.annotations.Test;
-
-import suite2.SauceDemoTests;
-
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class OpenCartTests {
 
@@ -66,22 +62,26 @@ public class OpenCartTests {
 
 		if(browser != "" && browser != null) {
 			if(browser.equalsIgnoreCase("Chrome")) {
+				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 			}
 			else if(browser.equalsIgnoreCase("firefox")) {
+				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
 			}
 			else {
 				System.out.println("Invalid option Selected hence defaulting to Chrome");
 				browser = "Chrome";
+				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 			}
 		}
 		else {
 			browser = "Chrome";
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
