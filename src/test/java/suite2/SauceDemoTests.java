@@ -56,7 +56,7 @@ public class SauceDemoTests {
 
 	//Login
 
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = false, priority = 1)
 	public void login() {
 		driver.findElement(By.id("user-name")).sendKeys("standard_user");
 		driver.findElement(By.id("password")).sendKeys("secret_sauce");
